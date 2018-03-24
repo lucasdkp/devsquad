@@ -13882,7 +13882,7 @@ window.Vue = __webpack_require__(36);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('dashboard', __webpack_require__(48));
+Vue.component('dashboard', __webpack_require__(39));
 
 var app = new Vue({
   el: '#app'
@@ -47097,7 +47097,53 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(6)))
 
 /***/ }),
-/* 39 */,
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(40)
+/* script */
+var __vue_script__ = __webpack_require__(41)
+/* template */
+var __vue_template__ = __webpack_require__(42)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/dashboard.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2073dee6", Component.options)
+  } else {
+    hotAPI.reload("data-v-2073dee6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
 /* 40 */
 /***/ (function(module, exports) {
 
@@ -47207,66 +47253,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 41 */,
-/* 42 */,
-/* 43 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(40)
-/* script */
-var __vue_script__ = __webpack_require__(49)
-/* template */
-var __vue_template__ = __webpack_require__(50)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/dashboard.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2073dee6", Component.options)
-  } else {
-    hotAPI.reload("data-v-2073dee6", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 49 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47315,65 +47302,441 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    methods: {
+
+        sayHello: function sayHello() {
+
+            alert('Hello');
+        }
+
+    },
+
     mounted: function mounted() {
-        console.log('Component mounted.');
+
+        this.sayHello();
+    },
+
+    data: function data() {
+
+        return {
+            todo: [{ id: 0, name: "Task de teste 1" }, { id: 2, name: "Taske de teste 3" }],
+
+            doing: [{ id: 1, name: "Task de teste 2" }, { id: 3, name: "Taske de teste 4" }],
+            finished: [{ id: 4, name: "Task de teste 5" }, { id: 5, name: "Taske de teste 6" }]
+        };
     }
 });
 
 /***/ }),
-/* 50 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card card-success" }, [
+          _c("div", { staticClass: "card-header" }, [_vm._v("Dashboard")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("table", { attrs: { width: "100%" } }, [
+              _c("tr", { attrs: { valign: "top" } }, [
+                _c("td", { attrs: { width: "33%" } }, [
+                  _c("div", { staticClass: "card card-success" }, [
+                    _c("div", { staticClass: "card-header" }, [
+                      _vm._v("To Do")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body" }, [
+                      _c(
+                        "ul",
+                        { staticClass: "list-group" },
+                        _vm._l(_vm.todo, function(task) {
+                          return _c("li", { staticClass: "list-group-item" }, [
+                            _c(
+                              "table",
+                              { attrs: { width: "100%", align: "center" } },
+                              [
+                                _c("tr", [
+                                  _vm._m(0, true),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    {
+                                      attrs: { width: "80%", align: "center" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                                                    " +
+                                          _vm._s(task.name) +
+                                          "\n                                                                "
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _vm._m(1, true)
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("p")
+                          ])
+                        })
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { width: "33%" } }, [
+                  _c("div", { staticClass: "card card-success" }, [
+                    _c("div", { staticClass: "card-header" }, [
+                      _vm._v("Doing")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body" }, [
+                      _c(
+                        "ul",
+                        { staticClass: "list-group" },
+                        _vm._l(_vm.doing, function(task) {
+                          return _c("li", { staticClass: "list-group-item" }, [
+                            _c(
+                              "table",
+                              { attrs: { width: "100%", align: "center" } },
+                              [
+                                _c("tr", [
+                                  _vm._m(2, true),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    {
+                                      attrs: { width: "80%", align: "center" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                                                    " +
+                                          _vm._s(task.name) +
+                                          "\n                                                                "
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _vm._m(3, true)
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("p")
+                          ])
+                        })
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { width: "33%" } }, [
+                  _c("div", { staticClass: "card card-success" }, [
+                    _c("div", { staticClass: "card-header" }, [
+                      _vm._v("Finished")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body" }, [
+                      _c(
+                        "ul",
+                        { staticClass: "list-group" },
+                        _vm._l(_vm.finished, function(task) {
+                          return _c("li", { staticClass: "list-group-item" }, [
+                            _c(
+                              "table",
+                              { attrs: { width: "100%", align: "center" } },
+                              [
+                                _c("tr", [
+                                  _vm._m(4, true),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    {
+                                      attrs: { width: "80%", align: "center" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                                                    " +
+                                          _vm._s(task.name) +
+                                          "\n                                                                "
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _vm._m(5, true)
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("p")
+                          ])
+                        })
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-4" }, [
-          _c("div", { staticClass: "card card-success" }, [
-            _c("div", { staticClass: "card-header" }, [_vm._v("To Do")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example for Trello Clone!.\n                "
-              )
-            ])
-          ])
-        ]),
+    return _c("td", { attrs: { width: "10%" } }, [
+      _c("i", { staticClass: "fa fa-tasks", staticStyle: { color: "blue" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { attrs: { width: "10%" } }, [
+      _c("div", { staticClass: "dropdown" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary dropdown-toggle btn-sm",
+            attrs: {
+              type: "button",
+              id: "dropdownMenuButton",
+              "data-toggle": "dropdown",
+              "aria-haspopup": "true",
+              "aria-expanded": "false"
+            }
+          },
+          [_c("i", { staticClass: "fa fa-menu" })]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-md-4" }, [
-          _c("div", { staticClass: "card card-success" }, [
-            _c("div", { staticClass: "card-header" }, [_vm._v("Doing")]),
+        _c(
+          "div",
+          {
+            staticClass: "dropdown-menu",
+            attrs: { "aria-labelledby": "dropdownMenuButton" }
+          },
+          [
+            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+              _vm._v("Move to Doing")
+            ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example for Trello Clone!.\n                "
-              )
+            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+              _vm._v("Move to Finished")
+            ]),
+            _vm._v(" "),
+            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+              _vm._v("Delete Task")
             ])
-          ])
-        ]),
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { attrs: { width: "10%" } }, [
+      _c("i", { staticClass: "fa fa-tasks", staticStyle: { color: "blue" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { attrs: { width: "10%" } }, [
+      _c("div", { staticClass: "dropdown" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary dropdown-toggle btn-sm",
+            attrs: {
+              type: "button",
+              id: "dropdownMenuButton",
+              "data-toggle": "dropdown",
+              "aria-haspopup": "true",
+              "aria-expanded": "false"
+            }
+          },
+          [_c("i", { staticClass: "fa fa-menu" })]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-md-4" }, [
-          _c("div", { staticClass: "card card-success" }, [
-            _c("div", { staticClass: "card-header" }, [_vm._v("Finished")]),
+        _c(
+          "div",
+          {
+            staticClass: "dropdown-menu",
+            attrs: { "aria-labelledby": "dropdownMenuButton" }
+          },
+          [
+            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+              _vm._v("Move to To Do")
+            ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example for Trello Clone!.\n                "
-              )
+            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+              _vm._v("Move to Finished")
+            ]),
+            _vm._v(" "),
+            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+              _vm._v("Delete Task")
             ])
-          ])
-        ])
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { attrs: { width: "10%" } }, [
+      _c("i", { staticClass: "fa fa-tasks", staticStyle: { color: "blue" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { attrs: { width: "10%" } }, [
+      _c("div", { staticClass: "dropdown" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary dropdown-toggle btn-sm",
+            attrs: {
+              type: "button",
+              id: "dropdownMenuButton",
+              "data-toggle": "dropdown",
+              "aria-haspopup": "true",
+              "aria-expanded": "false"
+            }
+          },
+          [_c("i", { staticClass: "fa fa-menu" })]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "dropdown-menu",
+            attrs: { "aria-labelledby": "dropdownMenuButton" }
+          },
+          [
+            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+              _vm._v("Move to To Do")
+            ]),
+            _vm._v(" "),
+            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+              _vm._v("Move to Doing")
+            ]),
+            _vm._v(" "),
+            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+              _vm._v("Delete Task")
+            ])
+          ]
+        )
       ])
     ])
   }
@@ -47386,6 +47749,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-2073dee6", module.exports)
   }
 }
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

@@ -47394,13 +47394,157 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     methods: {
 
         sayHello: function sayHello() {
 
-            alert('Hello');
+            console.log('Hello');
+        },
+
+        moveToDoing: function moveToDoing(task, origin, index) {
+
+            console.log('Moved to Doing ' + task.id);
+            this.doing.push({ id: task.id, name: task.name });
+
+            switch (origin) {
+                case 'todo':
+                    console.log('origem: ' + origin);
+                    Vue.delete(this.todo, index);
+                    break;
+                case 'doing':
+                    console.log('origem: ' + origin);
+                    Vue.delete(this.doing, index);
+                    break;
+                case 'finished':
+                    console.log('origem: ' + origin);
+                    Vue.delete(this.finished, index);
+                    break;
+                default:
+                    break;
+            }
+        },
+
+        moveToDo: function moveToDo(task, origin, index) {
+
+            console.log('Moved to To Do ' + task.id);
+            this.todo.push({ id: task.id, name: task.name });
+
+            switch (origin) {
+                case 'todo':
+                    console.log('origem: ' + origin);
+                    Vue.delete(this.todo, index);
+                    break;
+                case 'doing':
+                    console.log('origem: ' + origin);
+                    Vue.delete(this.doing, index);
+                    break;
+                case 'finished':
+                    console.log('origem: ' + origin);
+                    Vue.delete(this.finished, index);
+                    break;
+                default:
+                    break;
+            }
+        },
+
+        moveToFinished: function moveToFinished(task, origin, index) {
+
+            console.log('Moved to Finished ' + task.id);
+            this.finished.push({ id: task.id, name: task.name });
+
+            switch (origin) {
+                case 'todo':
+                    console.log('origem: ' + origin);
+                    Vue.delete(this.todo, index);
+                    break;
+                case 'doing':
+                    console.log('origem: ' + origin);
+                    Vue.delete(this.doing, index);
+                    break;
+                case 'finished':
+                    console.log('origem: ' + origin);
+                    Vue.delete(this.finished, index);
+                    break;
+                default:
+                    break;
+            }
+        },
+
+        deleteTask: function deleteTask(task, origin, index) {
+
+            console.log('Deleted ' + task.id);
+            switch (origin) {
+                case 'todo':
+                    console.log('origem: ' + origin);
+                    Vue.delete(this.todo, index);
+                    break;
+                case 'doing':
+                    console.log('origem: ' + origin);
+                    Vue.delete(this.doing, index);
+                    break;
+                case 'finished':
+                    console.log('origem: ' + origin);
+                    Vue.delete(this.finished, index);
+                    break;
+                default:
+                    break;
+            }
+        },
+
+        newTodo: function newTodo() {
+            console.log('New Todo: ' + this.new_todo);
+            this.todo.push({ name: this.new_todo });
+            this.new_todo = '';
+        },
+
+        newDoing: function newDoing() {
+            console.log('New To Doing: ' + this.new_doing);
+            this.doing.push({ name: this.new_doing });
+            this.new_doing = '';
+        },
+
+        newFinished: function newFinished() {
+            console.log('New Finished ' + this.new_finished);
+            this.finished.push({ name: this.new_finished });
+            this.new_finished = '';
         }
 
     },
@@ -47416,7 +47560,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             todo: [{ id: 0, name: "Task de teste 1" }, { id: 2, name: "Taske de teste 3" }],
 
             doing: [{ id: 1, name: "Task de teste 2" }, { id: 3, name: "Taske de teste 4" }],
-            finished: [{ id: 4, name: "Task de teste 5" }, { id: 5, name: "Taske de teste 6" }]
+            finished: [{ id: 4, name: "Task de teste 5" }, { id: 5, name: "Taske de teste 6" }],
+            new_todo: '',
+            new_doing: '',
+            new_finished: ''
         };
     }
 });
@@ -47448,37 +47595,172 @@ var render = function() {
                       _c(
                         "ul",
                         { staticClass: "list-group" },
-                        _vm._l(_vm.todo, function(task) {
-                          return _c("li", { staticClass: "list-group-item" }, [
-                            _c(
-                              "table",
-                              { attrs: { width: "100%", align: "center" } },
-                              [
-                                _c("tr", [
-                                  _vm._m(0, true),
-                                  _vm._v(" "),
+                        [
+                          _c("li", { staticClass: "list-group-item" }, [
+                            _c("table", { attrs: { width: "100%" } }, [
+                              _c("tr", [
+                                _c("td", { attrs: { align: "left" } }, [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.new_todo,
+                                        expression: "new_todo"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { placeholder: "New to do task" },
+                                    domProps: { value: _vm.new_todo },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.new_todo = $event.target.value
+                                      }
+                                    }
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { attrs: { align: "center" } }, [
                                   _c(
-                                    "td",
+                                    "button",
                                     {
-                                      attrs: { width: "80%", align: "center" }
+                                      staticClass: "btn btn-success",
+                                      attrs: { type: "submit" },
+                                      on: {
+                                        click: function($event) {
+                                          $event.preventDefault()
+                                          $event.stopPropagation()
+                                          _vm.newTodo()
+                                        }
+                                      }
                                     },
-                                    [
-                                      _vm._v(
-                                        "\n                                                                    " +
-                                          _vm._s(task.name) +
-                                          "\n                                                                "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _vm._m(1, true)
+                                    [_c("i", { staticClass: "fa fa-plus" })]
+                                  )
                                 ])
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.todo, function(task, index) {
+                            return _c(
+                              "li",
+                              { staticClass: "list-group-item" },
+                              [
+                                _c(
+                                  "table",
+                                  { attrs: { width: "100%", align: "center" } },
+                                  [
+                                    _c("tr", [
+                                      _vm._m(0, true),
+                                      _vm._v(" "),
+                                      _c(
+                                        "td",
+                                        {
+                                          attrs: {
+                                            width: "80%",
+                                            align: "center"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                                    " +
+                                              _vm._s(task.name) +
+                                              "\n                                                                "
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", { attrs: { width: "10%" } }, [
+                                        _c("div", { staticClass: "dropdown" }, [
+                                          _c("button", {
+                                            staticClass:
+                                              "btn btn-primary dropdown-toggle btn-sm",
+                                            attrs: {
+                                              type: "button",
+                                              id: "dropdownMenuButton",
+                                              "data-toggle": "dropdown",
+                                              "aria-haspopup": "true",
+                                              "aria-expanded": "false"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass: "dropdown-menu",
+                                              attrs: {
+                                                "aria-labelledby":
+                                                  "dropdownMenuButton"
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "a",
+                                                {
+                                                  staticClass: "dropdown-item",
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.moveToDoing(
+                                                        task,
+                                                        "todo",
+                                                        index
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [_vm._v("Move to Doing")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "a",
+                                                {
+                                                  staticClass: "dropdown-item",
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.moveToFinished(
+                                                        task,
+                                                        "todo",
+                                                        index
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [_vm._v("Move to Finished")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "a",
+                                                {
+                                                  staticClass: "dropdown-item",
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.deleteTask(
+                                                        task,
+                                                        "todo",
+                                                        index
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [_vm._v("Delete Task")]
+                                              )
+                                            ]
+                                          )
+                                        ])
+                                      ])
+                                    ])
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("p")
                               ]
-                            ),
-                            _vm._v(" "),
-                            _c("p")
-                          ])
-                        })
+                            )
+                          })
+                        ],
+                        2
                       )
                     ])
                   ])
@@ -47494,37 +47776,172 @@ var render = function() {
                       _c(
                         "ul",
                         { staticClass: "list-group" },
-                        _vm._l(_vm.doing, function(task) {
-                          return _c("li", { staticClass: "list-group-item" }, [
-                            _c(
-                              "table",
-                              { attrs: { width: "100%", align: "center" } },
-                              [
-                                _c("tr", [
-                                  _vm._m(2, true),
-                                  _vm._v(" "),
+                        [
+                          _c("li", { staticClass: "list-group-item" }, [
+                            _c("table", { attrs: { width: "100%" } }, [
+                              _c("tr", [
+                                _c("td", { attrs: { align: "left" } }, [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.new_doing,
+                                        expression: "new_doing"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { placeholder: "New doing task" },
+                                    domProps: { value: _vm.new_doing },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.new_doing = $event.target.value
+                                      }
+                                    }
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { attrs: { align: "center" } }, [
                                   _c(
-                                    "td",
+                                    "button",
                                     {
-                                      attrs: { width: "80%", align: "center" }
+                                      staticClass: "btn btn-success",
+                                      attrs: { type: "submit" },
+                                      on: {
+                                        click: function($event) {
+                                          $event.preventDefault()
+                                          $event.stopPropagation()
+                                          _vm.newDoing()
+                                        }
+                                      }
                                     },
-                                    [
-                                      _vm._v(
-                                        "\n                                                                    " +
-                                          _vm._s(task.name) +
-                                          "\n                                                                "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _vm._m(3, true)
+                                    [_c("i", { staticClass: "fa fa-plus" })]
+                                  )
                                 ])
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.doing, function(task, index) {
+                            return _c(
+                              "li",
+                              { staticClass: "list-group-item" },
+                              [
+                                _c(
+                                  "table",
+                                  { attrs: { width: "100%", align: "center" } },
+                                  [
+                                    _c("tr", [
+                                      _vm._m(1, true),
+                                      _vm._v(" "),
+                                      _c(
+                                        "td",
+                                        {
+                                          attrs: {
+                                            width: "80%",
+                                            align: "center"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                                    " +
+                                              _vm._s(task.name) +
+                                              "\n                                                                "
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", { attrs: { width: "10%" } }, [
+                                        _c("div", { staticClass: "dropdown" }, [
+                                          _c("button", {
+                                            staticClass:
+                                              "btn btn-primary dropdown-toggle btn-sm",
+                                            attrs: {
+                                              type: "button",
+                                              id: "dropdownMenuButton",
+                                              "data-toggle": "dropdown",
+                                              "aria-haspopup": "true",
+                                              "aria-expanded": "false"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass: "dropdown-menu",
+                                              attrs: {
+                                                "aria-labelledby":
+                                                  "dropdownMenuButton"
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "a",
+                                                {
+                                                  staticClass: "dropdown-item",
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.moveToDo(
+                                                        task,
+                                                        "doing",
+                                                        index
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [_vm._v("Move to To Do")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "a",
+                                                {
+                                                  staticClass: "dropdown-item",
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.moveToFinished(
+                                                        task,
+                                                        "doing",
+                                                        index
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [_vm._v("Move to Finished")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "a",
+                                                {
+                                                  staticClass: "dropdown-item",
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.deleteTask(
+                                                        task,
+                                                        "doing",
+                                                        index
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [_vm._v("Delete Task")]
+                                              )
+                                            ]
+                                          )
+                                        ])
+                                      ])
+                                    ])
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("p")
                               ]
-                            ),
-                            _vm._v(" "),
-                            _c("p")
-                          ])
-                        })
+                            )
+                          })
+                        ],
+                        2
                       )
                     ])
                   ])
@@ -47540,37 +47957,172 @@ var render = function() {
                       _c(
                         "ul",
                         { staticClass: "list-group" },
-                        _vm._l(_vm.finished, function(task) {
-                          return _c("li", { staticClass: "list-group-item" }, [
-                            _c(
-                              "table",
-                              { attrs: { width: "100%", align: "center" } },
-                              [
-                                _c("tr", [
-                                  _vm._m(4, true),
-                                  _vm._v(" "),
+                        [
+                          _c("li", { staticClass: "list-group-item" }, [
+                            _c("table", { attrs: { width: "100%" } }, [
+                              _c("tr", [
+                                _c("td", { attrs: { align: "left" } }, [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.new_finished,
+                                        expression: "new_finished"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { placeholder: "New finished task" },
+                                    domProps: { value: _vm.new_finished },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.new_finished = $event.target.value
+                                      }
+                                    }
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { attrs: { align: "center" } }, [
                                   _c(
-                                    "td",
+                                    "button",
                                     {
-                                      attrs: { width: "80%", align: "center" }
+                                      staticClass: "btn btn-success",
+                                      attrs: { type: "submit" },
+                                      on: {
+                                        click: function($event) {
+                                          $event.preventDefault()
+                                          $event.stopPropagation()
+                                          _vm.newFinished()
+                                        }
+                                      }
                                     },
-                                    [
-                                      _vm._v(
-                                        "\n                                                                    " +
-                                          _vm._s(task.name) +
-                                          "\n                                                                "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _vm._m(5, true)
+                                    [_c("i", { staticClass: "fa fa-plus" })]
+                                  )
                                 ])
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.finished, function(task, index) {
+                            return _c(
+                              "li",
+                              { staticClass: "list-group-item" },
+                              [
+                                _c(
+                                  "table",
+                                  { attrs: { width: "100%", align: "center" } },
+                                  [
+                                    _c("tr", [
+                                      _vm._m(2, true),
+                                      _vm._v(" "),
+                                      _c(
+                                        "td",
+                                        {
+                                          attrs: {
+                                            width: "80%",
+                                            align: "center"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                                    " +
+                                              _vm._s(task.name) +
+                                              "\n                                                                "
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", { attrs: { width: "10%" } }, [
+                                        _c("div", { staticClass: "dropdown" }, [
+                                          _c("button", {
+                                            staticClass:
+                                              "btn btn-primary dropdown-toggle btn-sm",
+                                            attrs: {
+                                              type: "button",
+                                              id: "dropdownMenuButton",
+                                              "data-toggle": "dropdown",
+                                              "aria-haspopup": "true",
+                                              "aria-expanded": "false"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass: "dropdown-menu",
+                                              attrs: {
+                                                "aria-labelledby":
+                                                  "dropdownMenuButton"
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "a",
+                                                {
+                                                  staticClass: "dropdown-item",
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.moveToDo(
+                                                        task,
+                                                        "finished",
+                                                        index
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [_vm._v("Move to To Do")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "a",
+                                                {
+                                                  staticClass: "dropdown-item",
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.moveToDoing(
+                                                        task,
+                                                        "finished",
+                                                        index
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [_vm._v("Move to Doing")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "a",
+                                                {
+                                                  staticClass: "dropdown-item",
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.deleteTask(
+                                                        task,
+                                                        "finished",
+                                                        index
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [_vm._v("Delete Task")]
+                                              )
+                                            ]
+                                          )
+                                        ])
+                                      ])
+                                    ])
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("p")
                               ]
-                            ),
-                            _vm._v(" "),
-                            _c("p")
-                          ])
-                        })
+                            )
+                          })
+                        ],
+                        2
                       )
                     ])
                   ])
@@ -47597,50 +48149,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", { attrs: { width: "10%" } }, [
-      _c("div", { staticClass: "dropdown" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary dropdown-toggle btn-sm",
-            attrs: {
-              type: "button",
-              id: "dropdownMenuButton",
-              "data-toggle": "dropdown",
-              "aria-haspopup": "true",
-              "aria-expanded": "false"
-            }
-          },
-          [_c("i", { staticClass: "fa fa-menu" })]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "dropdown-menu",
-            attrs: { "aria-labelledby": "dropdownMenuButton" }
-          },
-          [
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Move to Doing")
-            ]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Move to Finished")
-            ]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Delete Task")
-            ])
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { attrs: { width: "10%" } }, [
       _c("i", { staticClass: "fa fa-tasks", staticStyle: { color: "blue" } })
     ])
   },
@@ -47649,95 +48157,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", { attrs: { width: "10%" } }, [
-      _c("div", { staticClass: "dropdown" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary dropdown-toggle btn-sm",
-            attrs: {
-              type: "button",
-              id: "dropdownMenuButton",
-              "data-toggle": "dropdown",
-              "aria-haspopup": "true",
-              "aria-expanded": "false"
-            }
-          },
-          [_c("i", { staticClass: "fa fa-menu" })]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "dropdown-menu",
-            attrs: { "aria-labelledby": "dropdownMenuButton" }
-          },
-          [
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Move to To Do")
-            ]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Move to Finished")
-            ]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Delete Task")
-            ])
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { attrs: { width: "10%" } }, [
       _c("i", { staticClass: "fa fa-tasks", staticStyle: { color: "blue" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { attrs: { width: "10%" } }, [
-      _c("div", { staticClass: "dropdown" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary dropdown-toggle btn-sm",
-            attrs: {
-              type: "button",
-              id: "dropdownMenuButton",
-              "data-toggle": "dropdown",
-              "aria-haspopup": "true",
-              "aria-expanded": "false"
-            }
-          },
-          [_c("i", { staticClass: "fa fa-menu" })]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "dropdown-menu",
-            attrs: { "aria-labelledby": "dropdownMenuButton" }
-          },
-          [
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Move to To Do")
-            ]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Move to Doing")
-            ]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Delete Task")
-            ])
-          ]
-        )
-      ])
     ])
   }
 ]

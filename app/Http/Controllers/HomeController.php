@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user_id = Auth::id();
+
+        $todo = DB::table('todo')->where('id_user', $user_id)->get();
+        $doing = DB::table('doing')->where('id_user', $user_id)->get();
+        $finished = DB::table('finished')->where('id_user', $user_id)->get();
+
+        return view('home')->with("dados", ['todo' => $todo, 'doing' => $doing, 'finished' => $finished, 'id_user' => $user_id]);
     }
+
+
 }

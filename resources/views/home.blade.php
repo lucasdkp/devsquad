@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-  <dashboard></dashboard>
+  <dashboard v-bind:dados="{{ json_encode($dados) }}"></dashboard>
 @endsection
